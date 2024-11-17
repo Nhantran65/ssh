@@ -1,14 +1,18 @@
 class SpreadSheet:
-
     def __init__(self):
-        self._cells = {}
-        self._evaluating = set()
+        # Initialize an empty spreadsheet
+        self.data = []
 
-    def set(self, cell: str, value: str) -> None:
-        self._cells[cell] = value
+    def add_row(self, row):
+        """Add a row to the spreadsheet"""
+        self.data.append(row)
 
-    def get(self, cell: str) -> str:
-        return self._cells.get(cell, '')
+    def get_row(self, index):
+        """Retrieve a row at a specific index"""
+        if 0 <= index < len(self.data):
+            return self.data[index]
+        raise IndexError("Index out of range")
 
-    def evaluate(self, cell: str) -> int | str:
-        pass
+    def clear(self):
+        """Clear all rows from the spreadsheet"""
+        self.data.clear()
